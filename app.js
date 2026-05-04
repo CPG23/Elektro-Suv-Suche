@@ -1,6 +1,6 @@
-const DATA_UPDATED_AT = "2026-05-04";
+let DATA_UPDATED_AT = "2026-05-04";
 
-const cars = [
+let cars = [
   {
     name: "BYD SEALION 7",
     origin: "China",
@@ -177,7 +177,7 @@ const cars = [
   }
 ];
 
-const upcoming = [
+let upcoming = [
   {
     date: "Sommer 2026",
     name: "Mazda CX-6e Händlerstart",
@@ -266,41 +266,70 @@ function renderUpcoming() {
 
 sortSelect.addEventListener("change", renderCars);
 rangeFilter.addEventListener("change", renderCars);
-updateButton.addEventListener("click", runUpdateCheck);
+updateButton.addEventListener("click", () => runUpdateCheck({ automatic: false }));
 
 renderCars();
 renderUpcoming();
+runUpdateCheck({ automatic: true });
 
-function runUpdateCheck() {
+async function runUpdateCheck({ automatic }) {
   updateButton.disabled = true;
-  updateButton.textContent = "Suche läuft...";
+  updateButton.textContent = automatic ? "Prüfe Daten..." : "Suche läuft...";
   updatePanel.hidden = false;
   updatePanel.innerHTML = `
-    <h3>Aktualisierungen werden vorbereitet</h3>
-    <p>Ich prüfe den lokalen Datenstand und markiere Einträge, bei denen Preis oder Verfügbarkeit besonders wahrscheinlich neu kontrolliert werden sollten.</p>
+    <h3>${automatic ? "Automatische Aktualitätsprüfung" : "Aktualisierungen werden gesucht"}</h3>
+    <p>Die Seite lädt die neueste hinterlegte Fahrzeugliste und übernimmt neue Modelle automatisch, sobald sie in der Datendatei verfügbar sind.</p>
   `;
 
-  window.setTimeout(() => {
-    const checkedAt = new Intl.DateTimeFormat("de-AT", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }).format(new Date());
-    const volatileCars = cars.filter((car) => car.estimated || /Aktionspreis|erwartet|ca\./i.test(car.priceLabel));
-    const sourceLinks = volatileCars
-      .map((car) => `<li><a href="${car.source}" target="_blank" rel="noreferrer">${car.name}</a></li>`)
-      .join("");
+  const result = await loadFreshData();
+  const checkedAt = new Intl.DateTimeFormat("de-AT", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(new Date());
+  const volatileCars = cars.filter((car) => car.estimated || /Aktionspreis|erwartet|ca\./i.test(car.priceLabel));
+  const sourceLinks = volatileCars
+    .map((car) => `<li><a href="${car.source}" target="_blank" rel="noreferrer">${car.name}</a></li>`)
+    .join("");
+  const updateText = result.loaded
+    ? `${result.carCount} Modelle wurden aus der aktuellen Datendatei geladen.`
+    : "Die Online-Datendatei konnte nicht geladen werden; die Seite nutzt die eingebauten Fallback-Daten.";
 
-    updatePanel.innerHTML = `
-      <h3>Update-Check abgeschlossen</h3>
-      <p>
-        Datenstand der Seite: ${formatDataDate(DATA_UPDATED_AT)}. Lokale Prüfung am ${checkedAt}.
-        Besonders prüfenswert sind ${volatileCars.length} Modelle mit Aktionspreis, Schätzwert oder angekündigter Verfügbarkeit.
-      </p>
-      <ul class="update-list">${sourceLinks}</ul>
-    `;
-    updateButton.disabled = false;
-    updateButton.textContent = "Aktualisierungen suchen";
-  }, 700);
+  updatePanel.innerHTML = `
+    <h3>Update-Check abgeschlossen</h3>
+    <p>
+      ${updateText} Datenstand: ${formatDataDate(DATA_UPDATED_AT)}. Prüfung am ${checkedAt}.
+      Besonders prüfenswert sind ${volatileCars.length} Modelle mit Aktionspreis, Schätzwert oder angekündigter Verfügbarkeit.
+    </p>
+    <ul class="update-list">${sourceLinks}</ul>
+  `;
+  updateButton.disabled = false;
+  updateButton.textContent = "Aktualisierungen suchen";
+}
+
+async function loadFreshData() {
+  if (!window.fetch) {
+    return { loaded: false, carCount: cars.length };
+  }
+
+  try {
+    const response = await fetch(`data.json?ts=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Datendatei nicht erreichbar");
+    }
+    const data = await response.json();
+    if (!Array.isArray(data.cars) || !Array.isArray(data.upcoming)) {
+      throw new Error("Datendatei ist unvollständig");
+    }
+
+    cars = data.cars;
+    upcoming = data.upcoming;
+    DATA_UPDATED_AT = data.updatedAt || DATA_UPDATED_AT;
+    renderCars();
+    renderUpcoming();
+    return { loaded: true, carCount: cars.length };
+  } catch (error) {
+    return { loaded: false, carCount: cars.length, error };
+  }
 }
 
 function formatDataDate(value) {
