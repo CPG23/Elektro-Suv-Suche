@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elektro-SUV Radar Österreich</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Österreich · aktualisiert am 4. Mai 2026</p>
+        <h1>Elektro-SUV Radar</h1>
+      </div>
+      <nav aria-label="Seitennavigation">
+        <a href="#vergleich">Vergleich</a>
+        <a href="#demnaechst">Demnächst</a>
+        <a href="#quellen">Quellen</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Modelljahr 2026/2027 · € 40.000 bis € 60.000</p>
+          <h2 id="hero-title">Neue Elektro-SUVs in Österreich, gefiltert auf eine realistische Kaufklasse.</h2>
+          <p>
+            Reichweite, Ladezeit, Leistung, Preis und nützliche Extras kompakt sortiert.
+            Angezeigt werden nur aktuelle oder angekündigte Modelle innerhalb der gewünschten Preisspanne.
+            Aktionspreise und erwartete Preise sind klar markiert.
+          </p>
+        </div>
+        <div class="hero-panel" aria-label="Kurzüberblick">
+          <strong>9 Modelle</strong>
+          <span>darunter BYD, MG, XPENG und Leapmotor</span>
+          <span>bis 620 km WLTP</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Filter und Sortierung">
+        <label>
+          Sortieren
+          <select id="sortSelect">
+            <option value="recommended">Käufer-Empfehlung</option>
+            <option value="range">Reichweite</option>
+            <option value="price">Preis</option>
+            <option value="power">PS</option>
+            <option value="charge">Ladezeit</option>
+          </select>
+        </label>
+        <label>
+          Mindestreichweite
+          <select id="rangeFilter">
+            <option value="0">Alle</option>
+            <option value="500">ab 500 km</option>
+            <option value="600">ab 600 km</option>
+          </select>
+        </label>
+        <button id="updateButton" class="update-button" type="button">Aktualisierungen suchen</button>
+      </section>
+      <aside id="updatePanel" class="update-panel" aria-live="polite" hidden></aside>
+
+      <section id="vergleich" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Jetzt neu</p>
+          <h2>Vergleich pro Auto</h2>
+        </div>
+        <div id="carGrid" class="car-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="demnaechst" class="section upcoming-section">
+        <div class="section-head">
+          <p class="eyebrow">Ausblick</p>
+          <h2>In dieser Preisklasse als Nächstes relevant</h2>
+        </div>
+        <div id="upcomingList" class="timeline"></div>
+      </section>
+
+      <section id="quellen" class="section sources">
+        <div class="section-head">
+          <p class="eyebrow">Datenstand</p>
+          <h2>Quellen</h2>
+        </div>
+        <p>
+          Zusammengestellt aus Herstellerseiten, Händler-/Marktangeboten und österreichischen Automedien. WLTP-Werte sind Vergleichswerte;
+          reale Reichweiten und Ladezeiten hängen stark von Temperatur, Ausstattung, Fahrstil und Ladeleistung ab.
+          Modelle unter € 40.000 oder über € 60.000 werden hier bewusst nicht angezeigt.
+        </p>
+        <ul>
+          <li><a href="https://www.bydauto.at/modelle/sealion-7" target="_blank" rel="noreferrer">BYD Österreich: SEALION 7</a></li>
+          <li><a href="https://www.xpeng.com/at/model/g6" target="_blank" rel="noreferrer">XPENG Österreich: G6</a></li>
+          <li><a href="https://leapmotor.autos/leapmotor-c10/" target="_blank" rel="noreferrer">Leapmotor C10</a></li>
+          <li><a href="https://www.toyota.at/unternehmen/news/2026/der-neue-toyota-c-hr" target="_blank" rel="noreferrer">Toyota Austria: C-HR+</a></li>
+          <li><a href="https://www.kia.com/at/kaufberater/aktuelle-aktionen/ev5-2026/" target="_blank" rel="noreferrer">Kia Österreich: EV5 Angebot</a></li>
+          <li><a href="https://www.hyundai.at/ioniq-9/technik" target="_blank" rel="noreferrer">Hyundai Österreich: IONIQ 9 Technik</a></li>
+          <li><a href="https://at.mazda-press.com/news/2026/mazda-cx-6e-vorverkauf-startet-mit-1.-april/" target="_blank" rel="noreferrer">Mazda Austria Presse: CX-6e</a></li>
+          <li><a href="https://www.weekend.at/motor/mg-mgs6-ev-elektro-suv-reichweite-preis" target="_blank" rel="noreferrer">weekend.at: MG MGS6 EV Österreich</a></li>
+          <li><a href="https://www.jeep.at/neuer-jeep-compass/elektro" target="_blank" rel="noreferrer">Jeep Österreich: Compass Elektro</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
