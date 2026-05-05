@@ -1,4 +1,4 @@
-let DATA_UPDATED_AT = "2026-05-04";
+let DATA_UPDATED_AT = "2026-05-05";
 
 let cars = [
   {
@@ -174,6 +174,63 @@ let cars = [
     extras: ["Wärmepumpe", "Panoramadach", "360 Grad Kamera", "bis 800 V bei AWD"],
     note: "Der aggressive China-Preisbrecher: sehr viel Leistung oder Reichweite für wenig Geld, Händlerlage prüfen.",
     score: 86
+  },
+  {
+    name: "VW ID.4 GTX",
+    origin: "Deutschland",
+    modelYear: "MJ 2026",
+    status: "neu verfügbar",
+    price: 45590,
+    priceLabel: "ab € 45.590",
+    range: 522,
+    chargeMinutes: 26,
+    chargeLabel: "10-80 % ca. 26 min",
+    power: 340,
+    powerLabel: "340 PS AWD",
+    battery: "77 kWh",
+    image: "https://www.volkswagen.at/content/dam/nwsb/volkswagen/models/id4/id4-gtx/exterior/id4-gtx-4motion-hero.jpg",
+    source: "https://www.volkswagen.at/id4/id4-gtx",
+    extras: ["4MOTION Allrad", "bis 185 kW DC", "250 kW Systemleistung", "GTX-Sportfahrwerk"],
+    note: "Bewährter Allrounder aus Deutschland: 522 km WLTP, 340 PS AWD und 185-kW-Schnellladen zu fairem Einstiegspreis.",
+    score: 89
+  },
+  {
+    name: "Škoda Enyaq 85",
+    origin: "VW Konzern",
+    modelYear: "MJ 2026",
+    status: "Facelift verfügbar",
+    price: 48900,
+    priceLabel: "ab € 48.900",
+    range: 566,
+    chargeMinutes: 28,
+    chargeLabel: "10-80 % ca. 28 min",
+    power: 286,
+    powerLabel: "286 PS",
+    battery: "77 kWh",
+    image: "https://www.skoda.at/content/dam/skoda/skoda.at/models/enyaq/facelift-2025/enyaq-85-hero.jpg",
+    source: "https://www.skoda.at/enyaq/enyaq",
+    extras: ["Wärmepumpe serienmäßig", "Frunk", "Modern Solid Design", "175 kW DC"],
+    note: "Hohe Reichweite und VW-Qualität: Das Enyaq-Facelift liefert 566 km WLTP und 175-kW-DC-Laden zu einem ausgewogenen Preis.",
+    score: 90
+  },
+  {
+    name: "BMW iX1 eDrive20",
+    origin: "Deutschland",
+    modelYear: "MJ 2026",
+    status: "neu verfügbar",
+    price: 49410,
+    priceLabel: "ab € 49.410",
+    range: 514,
+    chargeMinutes: 30,
+    chargeLabel: "10-80 % ca. 30 min",
+    power: 204,
+    powerLabel: "204 PS",
+    battery: "65,2 kWh",
+    image: "https://www.bmw.at/content/dam/bmw/common/all-models/i-series/ix1/studio/bmw-ix1-edrive20-inspire.jpg",
+    source: "https://www.bmw.at/de/all-models/bmw-i/ix1/bmw-ix1.html",
+    extras: ["M Sport serienmäßig", "SiC-Inverter 2026", "bis 130 kW DC", "Live Cockpit Plus"],
+    note: "BMW-Premium zum vernünftigen Preis: 514 km WLTP dank 2026-Facelift – 130 kW DC-Maximum ist der einzige Schwachpunkt.",
+    score: 83
   }
 ];
 
@@ -199,7 +256,7 @@ let upcoming = [
   {
     date: "Ausgeblendet",
     name: "Unter € 40.000",
-    text: "BYD SEAL U, Škoda Epiq, Toyota Urban Cruiser und VW ID. Cross sind interessant, liegen aber nach aktuellem Stand unter der gewünschten Preisspanne.",
+    text: "BYD SEAL U, Škoda Epiq, Toyota Urban Cruiser und VW ID. Cross sind interessant, liegen aber nach aktuellem Stand unter der gewünschten Preisspanne. VW ID.4 GTX, Škoda Enyaq 85 und BMW iX1 eDrive20 sind bereits in der Hauptliste.",
     price: "nicht in Liste"
   }
 ];
@@ -226,7 +283,7 @@ function renderCars() {
 
   grid.innerHTML = sorted.map((car) => `
     <article class="car-card">
-      <img src="${car.image}" alt="${car.name}" loading="lazy">
+      <img src="${car.image}" alt="${car.name}" loading="lazy" onerror="this.style.visibility='hidden'">
       <div class="card-body">
         <div class="card-title">
           <h3>${car.name}</h3>
