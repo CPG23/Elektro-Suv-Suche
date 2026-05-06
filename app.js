@@ -1,4 +1,4 @@
-let DATA_UPDATED_AT = "2026-05-05";
+let DATA_UPDATED_AT = "2026-05-06";
 
 let cars = [
   {
@@ -14,7 +14,11 @@ let cars = [
     power: 530,
     powerLabel: "313 oder 530 PS",
     battery: "BYD Blade Battery",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f0/BYD_Sealion_7%2C_Frankfurt_%2820251115-P1074666%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b0/2024_BYD_Sealion_7_Performance_AWD_%28Thailand%29_front_view.png",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/b/b0/2024_BYD_Sealion_7_Performance_AWD_%28Thailand%29_front_view.png",
+      "https://upload.wikimedia.org/wikipedia/commons/f/f0/BYD_Sealion_7%2C_Frankfurt_%2820251115-P1074666%29.jpg"
+    ],
     source: "https://www.bydauto.at/modelle/sealion-7",
     extras: ["bis 230 kW DC", "Panoramadach", "bis 1.789 l Ladevolumen", "Komfortsitze"],
     note: "Der sichtbarste BYD-Kandidat in der Zielklasse: stark, schnell ladend und preislich direkt im Sweet Spot.",
@@ -33,7 +37,7 @@ let cars = [
     power: 343,
     powerLabel: "167 bis 343 PS",
     battery: "57,7 oder 77 kWh",
-    image: "https://scene7.toyota.eu/is/image/toyotaeurope/93817-toyotac-hrdplline-up-at-hotel-05-web-lr?wid=900",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f7/Toyota_C-HR%2B_Auto_Zuerich_2025_DSC_3056.jpg",
     source: "https://www.toyota.at/unternehmen/news/2026/der-neue-toyota-c-hr",
     extras: ["Wärmepumpe", "Batterievorkonditionierung", "Toyota T-Mate", "bis 22 kW AC"],
     note: "Sehr starker Allrounder: hohe Reichweite, kompakte SUV-Form und kurze DC-Ladezeit.",
@@ -53,6 +57,10 @@ let cars = [
     powerLabel: "218 PS",
     battery: "81,4 kWh",
     image: "https://upload.wikimedia.org/wikipedia/commons/e/ed/2024_Kia_EV5_EV_in_Sky_Blue%2C_front_right.jpg",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/e/ed/2024_Kia_EV5_EV_in_Sky_Blue%2C_front_right.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/c/c5/2024_Kia_EV5_Earth_Exclusive_AWD_%28Thailand%29_front_view.png"
+    ],
     source: "https://www.kia.com/at/kaufberater/aktuelle-aktionen/ev5-2026/",
     extras: ["7 Jahre Garantie", "viel Innenraum", "Assistenzsysteme", "Infotainment"],
     note: "Sehr familiennaher Kauf: großer Akku, gute Garantie und ein noch moderater Einstiegspreis.",
@@ -129,7 +137,12 @@ let cars = [
     power: 258,
     powerLabel: "258 PS",
     battery: "78 kWh",
-    image: "https://at.mazda-press.com/globalassets/generic-cms-images/02-heroes/2026/all-new-mazda-cx-6e/hero-mazda_cx-6e-03-mob.jpg/highdefinitionhalfsize?token=hvl7YCs1sZRGMIxNU383JXb6IbQQ9DhFC25bDGIJoKg1",
+    image: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Mazda_EZ-60_001.jpg",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/d/d0/Mazda_EZ-60_001.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/b/b1/Mazda_EZ-60_002.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/fa/Mazda_EZ-60_003.jpg"
+    ],
     source: "https://at.mazda-press.com/news/2026/mazda-cx-6e-vorverkauf-startet-mit-1.-april/",
     extras: ["Head-up-Display", "26 Zoll Display", "Panoramaglasdach", "23 Lautsprecher"],
     note: "Komfort- und Design-Wahl: sehr gute Serienausstattung und schnelle 10-80-Prozent-Ladung.",
@@ -168,7 +181,11 @@ let cars = [
     power: 598,
     powerLabel: "299 oder 598 PS",
     battery: "81,9 kWh",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Leapmotor_C10_IAA_2023_1X7A0247.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9b/%28SGP-Singapore%29_Showcar_Leapmotor_C10_No-plate_2026-01-09.jpg",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/9/9b/%28SGP-Singapore%29_Showcar_Leapmotor_C10_No-plate_2026-01-09.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/b/ba/Leapmotor_C10_IAA_2023_1X7A0247.jpg"
+    ],
     source: "https://leapmotor.autos/leapmotor-c10/",
     estimated: true,
     extras: ["Wärmepumpe", "Panoramadach", "360 Grad Kamera", "bis 800 V bei AWD"],
@@ -188,7 +205,11 @@ let cars = [
     power: 340,
     powerLabel: "340 PS AWD",
     battery: "77 kWh",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Volkswagen_ID.4_GTX_1X7A0301.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Volkswagen_ID.4_GTX_1X7A0299.jpg",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/c/ca/Volkswagen_ID.4_GTX_1X7A0299.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/7/7b/Volkswagen_ID.4_GTX_1X7A0301.jpg"
+    ],
     source: "https://www.volkswagen.at/id4/id4-gtx",
     extras: ["4MOTION Allrad", "bis 185 kW DC", "250 kW Systemleistung", "GTX-Sportfahrwerk"],
     note: "Bewährter Allrounder aus Deutschland: 522 km WLTP, 340 PS AWD und 185-kW-Schnellladen zu fairem Einstiegspreis.",
@@ -226,7 +247,11 @@ let cars = [
     power: 204,
     powerLabel: "204 PS",
     battery: "65,2 kWh",
-    image: "https://upload.wikimedia.org/wikipedia/commons/d/d7/BMW_iX1_1X7A6827.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b4/2023-04_BMW_iX1_U11_front_view.jpg",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/b/b4/2023-04_BMW_iX1_U11_front_view.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/d/d7/BMW_iX1_1X7A6827.jpg"
+    ],
     source: "https://www.bmw.at/de/all-models/bmw-i/ix1/bmw-ix1.html",
     extras: ["M Sport serienmäßig", "SiC-Inverter 2026", "bis 130 kW DC", "Live Cockpit Plus"],
     note: "BMW-Premium zum vernünftigen Preis: 514 km WLTP dank 2026-Facelift – 130 kW DC-Maximum ist der einzige Schwachpunkt.",
@@ -268,6 +293,43 @@ const upcomingList = document.querySelector("#upcomingList");
 const updateButton = document.querySelector("#updateButton");
 const updatePanel = document.querySelector("#updatePanel");
 
+function buildCarousel(car) {
+  const imgs = Array.isArray(car.images) && car.images.length > 1 ? car.images : null;
+  if (!imgs) {
+    return `<img src="${car.image}" alt="${car.name}" loading="lazy" onerror="this.style.visibility='hidden'">`;
+  }
+  const slides = imgs.map((src) =>
+    `<img src="${src}" alt="${car.name}" loading="lazy" onerror="this.style.visibility='hidden'">`
+  ).join("");
+  const dots = imgs.map((_, i) =>
+    `<li class="${i === 0 ? "active" : ""}" onclick="carouselDot(this,${i})"></li>`
+  ).join("");
+  return `<div class="carousel" data-index="0">
+    <div class="carousel-inner">${slides}</div>
+    <button class="car-prev" onclick="carouselMove(this,-1)" aria-label="Zurück">&#8249;</button>
+    <button class="car-next" onclick="carouselMove(this,1)" aria-label="Weiter">&#8250;</button>
+    <ol class="car-dots">${dots}</ol>
+  </div>`;
+}
+
+function carouselMove(btn, dir) {
+  const c = btn.closest(".carousel");
+  const inner = c.querySelector(".carousel-inner");
+  const count = inner.children.length;
+  const idx = (parseInt(c.dataset.index, 10) + dir + count) % count;
+  c.dataset.index = idx;
+  inner.style.transform = `translateX(-${idx * 100}%)`;
+  c.querySelectorAll(".car-dots li").forEach((d, i) => d.classList.toggle("active", i === idx));
+}
+
+function carouselDot(dot, idx) {
+  const c = dot.closest(".carousel");
+  const inner = c.querySelector(".carousel-inner");
+  c.dataset.index = idx;
+  inner.style.transform = `translateX(-${idx * 100}%)`;
+  c.querySelectorAll(".car-dots li").forEach((d, i) => d.classList.toggle("active", i === idx));
+}
+
 function renderCars() {
   const minRange = Number(rangeFilter.value);
   const sort = sortSelect.value;
@@ -283,7 +345,7 @@ function renderCars() {
 
   grid.innerHTML = sorted.map((car) => `
     <article class="car-card">
-      <img src="${car.image}" alt="${car.name}" loading="lazy" onerror="this.style.visibility='hidden'">
+      ${buildCarousel(car)}
       <div class="card-body">
         <div class="card-title">
           <h3>${car.name}</h3>
