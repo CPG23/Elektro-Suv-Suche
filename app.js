@@ -161,7 +161,7 @@ let cars = [
     power: 213,
     powerLabel: "213 PS",
     battery: "74 kWh",
-    image: "https://www.jeep.at/content/dam/jeep/crossmarket/compass-my26/electric/hero/desktop/jeep-compass-bev-hero-desktop.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Jeep_Compass_%28MP%29_PHEV_Facelift_1X7A0140.jpg",
     source: "https://www.jeep.at/neuer-jeep-compass/elektro",
     estimated: true,
     extras: ["STLA Medium", "4 Jahre Garantie bei Finanzierung", "robustes SUV-Design", "kompakte Klasse"],
