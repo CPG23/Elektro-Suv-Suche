@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "23 5 * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/fetch-autoscout-offers.js"
+      - ".github/workflows/autoscout-offers.yml"
 
 permissions:
   contents: write
