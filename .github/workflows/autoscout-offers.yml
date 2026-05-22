@@ -25,6 +25,11 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install browser tools
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
       - name: Fetch AutoScout offers
         run: node scripts/fetch-autoscout-offers.js
 
