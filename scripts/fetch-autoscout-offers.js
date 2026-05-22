@@ -26,7 +26,7 @@ async function main() {
     const url = buildSearchUrl(path, criteria);
     try {
       const html = await fetchHtml(url);
-      offers[name] = parseOffers(html).slice(0, MAX_OFFERS_PER_MODEL);
+      offers[name] = parseOffers(html, name, criteria, url).slice(0, MAX_OFFERS_PER_MODEL);
       console.log(`${name}: ${offers[name].length} Treffer`);
     } catch (error) {
       offers[name] = [];
@@ -57,12 +57,11 @@ function buildSearchUrl(path, criteria) {
     atype: "C",
     cy: criteria.country,
     kmto: String(criteria.maxMileageKm),
-    fregfrom: String(criteria.fromYear),
     sort: "standard",
     desc: "0"
   });
 
-  return `https://www.autoscout24.at/lst/${path}?${params.toString()}`;
+  return `https://www.autoscout24.at/lst/${path}/re_${criteria.fromYear}?${params.toString()}`;
 }
 
 async function fetchHtml(url) {
@@ -81,7 +80,16 @@ async function fetchHtml(url) {
   return response.text();
 }
 
-function parseOffers(html) {
+function parseOffers(html, modelName, criteria, searchUrl) {
+  const linkedOffers = parseLinkedOffers(html, criteria);
+  if (linkedOffers.length) {
+    return linkedOffers;
+  }
+
+  return parseTextOffers(html, modelName, criteria, searchUrl);
+}
+
+function parseLinkedOffers(html, criteria) {
   const matches = [...html.matchAll(/href="([^"]*\/angebote\/[^"]+)"/g)];
   const seen = new Set();
   const offers = [];
@@ -98,23 +106,18 @@ function parseOffers(html) {
     const end = Math.min(html.length, match.index + 3200);
     const chunk = decodeEntities(stripTags(html.slice(start, end))).replace(/\s+/g, " ").trim();
     const title = extractTitle(chunk);
-
-    offers.push({
+    const offer = {
       title: title || "AutoScout-Angebot",
-      price: extractFirst(chunk, [
-        /€\s?[\d. ]{4,}/,
-        /[\d. ]{4,}\s?€/
-      ]),
-      mileage: extractFirst(chunk, [
-        /\b\d{1,3}(?:[.\s]\d{3})?\s?km\b/i
-      ]),
-      year: extractFirst(chunk, [
-        /\b20(?:25|26|27)\b/,
-        /\bEZ\s?20(?:25|26|27)\b/i
-      ]),
+      price: extractFirst(chunk, [/€\s?[\d. ]{4,}/, /[\d. ]{4,}\s?€/]),
+      mileage: extractFirst(chunk, [/\b\d{1,3}(?:[.\s]\d{3})?\s?km\b/i]),
+      year: extractFirst(chunk, [/\b(?:0[1-9]|1[0-2])\/20(?:25|26|27)\b/, /\b20(?:25|26|27)\b/]),
       location: extractLocation(chunk),
       url: cleanUrl
-    });
+    };
+
+    if (matchesCriteria(offer, criteria)) {
+      offers.push(offer);
+    }
 
     if (offers.length >= MAX_OFFERS_PER_MODEL) {
       break;
@@ -122,6 +125,54 @@ function parseOffers(html) {
   }
 
   return offers;
+}
+
+function parseTextOffers(html, modelName, criteria, searchUrl) {
+  const lines = textLinesFromHtml(html);
+  const modelTerms = modelName
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((term) => term.length > 2 && !/^(85|gtx|ev|suv|elektro)$/.test(term));
+  const offers = [];
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const normalizedLine = line
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    if (!modelTerms.every((term) => normalizedLine.includes(term))) {
+      continue;
+    }
+
+    const windowLines = lines.slice(i, i + 12);
+    const joined = windowLines.join(" ");
+    const offer = {
+      title: line,
+      price: extractFirst(joined, [/€\s?[\d. ]{4,}/, /[\d. ]{4,}\s?€/]),
+      mileage: extractFirst(joined, [/\b\d{1,3}(?:[.\s]\d{3})?\s?km\b/i]),
+      year: extractFirst(joined, [/\b(?:0[1-9]|1[0-2])\/20(?:25|26|27)\b/, /\b20(?:25|26|27)\b/]),
+      location: extractLocation(joined),
+      url: searchUrl
+    };
+
+    if (offer.price && matchesCriteria(offer, criteria) && !isDuplicate(offers, offer)) {
+      offers.push(offer);
+    }
+
+    if (offers.length >= MAX_OFFERS_PER_MODEL) {
+      break;
+    }
+  }
+
+  return offers;
+}
+
+function isDuplicate(offers, offer) {
+  return offers.some((existing) => existing.title === offer.title && existing.mileage === offer.mileage);
 }
 
 function absolutize(url) {
@@ -136,6 +187,17 @@ function stripTags(value) {
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
     .replace(/<style[\s\S]*?<\/style>/gi, " ")
     .replace(/<[^>]+>/g, " ");
+}
+
+function textLinesFromHtml(value) {
+  return decodeEntities(value)
+    .replace(/<script[\s\S]*?<\/script>/gi, "\n")
+    .replace(/<style[\s\S]*?<\/style>/gi, "\n")
+    .replace(/<(h1|h2|h3|h4|p|div|li|span|article|section|br)\b[^>]*>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .split(/\n+/)
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
 }
 
 function decodeEntities(value) {
@@ -166,6 +228,28 @@ function extractFirst(chunk, patterns) {
 function extractLocation(chunk) {
   const match = chunk.match(/\b(1010|1020|1030|1040|1050|1060|1070|1080|1090|1100|1110|1120|1130|1140|1150|1160|1170|1180|1190|1200|[2-9]\d{3})\s+[A-ZÄÖÜ][A-Za-zÄÖÜäöüß.\- ]{2,40}/);
   return match ? match[0].trim() : "";
+}
+
+function matchesCriteria(offer, criteria) {
+  return parseMileage(offer.mileage) <= criteria.maxMileageKm && parseYear(offer.year) >= criteria.fromYear;
+}
+
+function parseMileage(value) {
+  if (!value) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const normalized = value.replace(/[^\d]/g, "");
+  return normalized ? Number(normalized) : Number.POSITIVE_INFINITY;
+}
+
+function parseYear(value) {
+  if (!value) {
+    return 0;
+  }
+
+  const match = value.match(/20(?:25|26|27)/);
+  return match ? Number(match[0]) : 0;
 }
 
 main().catch((error) => {
