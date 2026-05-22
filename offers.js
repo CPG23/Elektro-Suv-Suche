@@ -164,24 +164,12 @@
 
   function buildOfferSearches(carName, criteria) {
     const autoscoutPath = getAutoscoutPath(carName);
-    const query = encodeURIComponent(`${carName} Baujahr ${criteria.sinceYear} 5000 km`);
-    const detailedQuery = encodeURIComponent(`"${carName}" Oesterreich "5000 km" "Baujahr" "${criteria.sinceYear}" "Erstzulassung"`);
 
     return [
       {
         label: "AutoScout24 oeffnen",
         hint: `mit Oesterreich, maximal 5.000 km und Erstzulassung ab ${criteria.sinceYear}`,
         url: `https://www.autoscout24.at/lst/${autoscoutPath}?atype=C&cy=A&kmto=5000&fregfrom=${criteria.sinceYear}&sort=standard&desc=0`
-      },
-      {
-        label: "willhaben suchen",
-        hint: `mit Baujahr ${criteria.sinceYear} und Kilometerlimit als Suchbegriff`,
-        url: `https://www.willhaben.at/iad/gebrauchtwagen/auto/gebrauchtwagenboerse?keyword=${query}`
-      },
-      {
-        label: "Websuche starten",
-        hint: "zusaetzliche Haendler- und Vorfuehrwagen-Treffer",
-        url: `https://www.google.com/search?q=${detailedQuery}`
       }
     ];
   }
