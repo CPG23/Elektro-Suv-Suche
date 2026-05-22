@@ -1,9 +1,22 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-05-22T21:20:29.486Z",
   "criteria": {
     "country": "AT",
     "maxMileageKm": 5000,
     "fromYear": 2025
   },
-  "offers": {}
+  "offers": {
+    "BYD SEALION 7": [],
+    "Toyota C-HR+": [],
+    "Kia EV5": [],
+    "XPENG G6": [],
+    "MG MGS6 EV": [],
+    "Hyundai IONIQ 9": [],
+    "Mazda CX-6e": [],
+    "Jeep Compass Elektro": [],
+    "Leapmotor C10 ProMax": [],
+    "VW ID.4 GTX": [],
+    "Skoda Enyaq 85": [],
+    "BMW iX1 eDrive20": []
+  }
 }
