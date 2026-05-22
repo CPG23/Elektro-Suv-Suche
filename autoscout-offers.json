@@ -1,9 +1,130 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-05-22T21:18:38.280Z",
   "criteria": {
     "country": "AT",
     "maxMileageKm": 5000,
     "fromYear": 2025
   },
-  "offers": {}
+  "offers": {
+    "BYD SEALION 7": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/byd/sealion-7?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Toyota C-HR+": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/toyota/c-hr?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Kia EV5": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/kia/ev5?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "XPENG G6": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/xpeng/g6?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "MG MGS6 EV": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/mg/mgs6?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Hyundai IONIQ 9": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/hyundai/ioniq-9?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Mazda CX-6e": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/mazda/cx-6e?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Jeep Compass Elektro": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/jeep/compass?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Leapmotor C10 ProMax": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/leapmotor/c10?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "VW ID.4 GTX": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/volkswagen/id-4?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "Skoda Enyaq 85": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/skoda/enyaq?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ],
+    "BMW iX1 eDrive20": [
+      {
+        "title": "AutoScout-Suche oeffnen",
+        "price": "",
+        "mileage": "",
+        "year": "",
+        "location": "",
+        "url": "https://www.autoscout24.at/lst/bmw/ix1?atype=C&cy=AT&kmto=5000&fregfrom=2025&sort=standard&desc=0"
+      }
+    ]
+  }
 }
