@@ -1,0 +1,9 @@
+{
+  "updatedAt": null,
+  "criteria": {
+    "country": "AT",
+    "maxMileageKm": 5000,
+    "fromYear": 2025
+  },
+  "offers": {}
+}
