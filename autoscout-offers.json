@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-22T21:29:44.057Z",
+  "updatedAt": "2026-05-22T21:31:20.661Z",
   "criteria": {
     "country": "AT",
     "maxMileageKm": 5000,
@@ -22,7 +22,7 @@
   "debug": {
     "BYD SEALION 7": {
       "url": "https://www.autoscout24.at/lst/byd/sealion-7/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 456836,
+      "htmlLength": 456915,
       "lineCount": 128,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -57,7 +57,7 @@
     },
     "Toyota C-HR+": {
       "url": "https://www.autoscout24.at/lst/toyota/c-hr/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 468531,
+      "htmlLength": 468444,
       "lineCount": 142,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -70,7 +70,7 @@
         "Toyota C-HR+ Gebraucht",
         "Toyota Yaris Cross Gebraucht",
         "Toyota Urban Cruiser Gebraucht",
-        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"70\",\"model\":\"74374\",\"miles\":\"\",\"rnd\":\"88\",\"seg\":\"compact,suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
+        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"70\",\"model\":\"74374\",\"miles\":\"\",\"rnd\":\"83\",\"seg\":\"compact,suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
         "Startseite",
         "Suche",
         "Toyota",
@@ -157,7 +157,7 @@
     },
     "MG MGS6 EV": {
       "url": "https://www.autoscout24.at/lst/mg/mgs6/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 460176,
+      "htmlLength": 460181,
       "lineCount": 141,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -171,7 +171,7 @@
         "MG Baden",
         "MG Wolfsberg",
         "MG Traun",
-        "{\"atsd\":[],\"countrySearch\":null,\"splz\":\"mgs6\",\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"48\",\"model\":null,\"miles\":\"\",\"rnd\":\"5\",\"seg\":\"\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
+        "{\"atsd\":[],\"countrySearch\":null,\"splz\":\"mgs6\",\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"48\",\"model\":null,\"miles\":\"\",\"rnd\":\"15\",\"seg\":\"\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
         "Startseite",
         "Suche",
         "MG",
@@ -192,7 +192,7 @@
     },
     "Hyundai IONIQ 9": {
       "url": "https://www.autoscout24.at/lst/hyundai/ioniq-9/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 461123,
+      "htmlLength": 461126,
       "lineCount": 123,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -225,7 +225,7 @@
     },
     "Mazda CX-6e": {
       "url": "https://www.autoscout24.at/lst/mazda/cx-6e/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 455862,
+      "htmlLength": 455859,
       "lineCount": 115,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -250,7 +250,7 @@
     },
     "Jeep Compass Elektro": {
       "url": "https://www.autoscout24.at/lst/jeep/compass/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 463013,
+      "htmlLength": 463026,
       "lineCount": 151,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -272,7 +272,7 @@
         "Land Rover Discovery Sport Gebraucht",
         "MG ZS Gebraucht",
         "Opel Antara Gebraucht",
-        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"38\",\"model\":\"18967\",\"miles\":\"\",\"rnd\":\"83\",\"seg\":\"offroad,suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
+        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"38\",\"model\":\"18967\",\"miles\":\"\",\"rnd\":\"40\",\"seg\":\"offroad,suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
         "Startseite",
         "Suche",
         "Jeep",
@@ -285,7 +285,7 @@
     },
     "Leapmotor C10 ProMax": {
       "url": "https://www.autoscout24.at/lst/leapmotor/c10/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 457120,
+      "htmlLength": 457123,
       "lineCount": 133,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -320,14 +320,14 @@
     },
     "VW ID.4 GTX": {
       "url": "https://www.autoscout24.at/lst/volkswagen/id-4/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 468758,
+      "htmlLength": 468755,
       "lineCount": 136,
       "hasAutoscout": true,
       "hasModelToken": true,
       "offerLinkCount": 0,
       "sampleLines": [
         "Polestar 2 Gebraucht",
-        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"74\",\"model\":\"75645\",\"miles\":\"\",\"rnd\":\"69\",\"seg\":\"suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
+        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"74\",\"model\":\"75645\",\"miles\":\"\",\"rnd\":\"30\",\"seg\":\"suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
         "Startseite",
         "Suche",
         "Volkswagen",
@@ -355,7 +355,7 @@
     },
     "Skoda Enyaq 85": {
       "url": "https://www.autoscout24.at/lst/skoda/enyaq/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 460556,
+      "htmlLength": 460479,
       "lineCount": 139,
       "hasAutoscout": true,
       "hasModelToken": true,
@@ -365,7 +365,7 @@
         "BMW X5 Gebraucht",
         "BMW 318 Gebraucht",
         "BMW X1 Gebraucht",
-        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"65\",\"model\":\"75750\",\"miles\":\"\",\"rnd\":\"5\",\"seg\":\"suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
+        "{\"atsd\":[],\"countrySearch\":null,\"splz\":null,\"price\":\"1,2,3,4,5,6,7,8,9,10\",\"articleType\":\"C\",\"buyonline\":\"false\",\"ECO\":\"NO\",\"fr\":\"11\",\"hp\":[],\"leasing\":\"false\",\"make\":\"65\",\"model\":\"75750\",\"miles\":\"\",\"rnd\":\"62\",\"seg\":\"suv\",\"type\":\"U,N,D,O,J,S\",\"vat\":\"0\",\"mgroupid\":null,\"refactor\":\"list2021\",\"cockpit\":\"F\"}",
         "Startseite",
         "Suche",
         "Skoda",
@@ -390,7 +390,7 @@
     },
     "BMW iX1 eDrive20": {
       "url": "https://www.autoscout24.at/lst/bmw/ix1/re_2025?atype=C&cy=AT&sort=standard&desc=0",
-      "htmlLength": 463700,
+      "htmlLength": 463479,
       "lineCount": 126,
       "hasAutoscout": true,
       "hasModelToken": true,
