@@ -27,7 +27,7 @@
     const updatedAt = candidates.updatedAt ? formatDate(candidates.updatedAt) : "unbekannt";
     block.innerHTML = `
       <h3>Moegliche neue Modelle</h3>
-      <p>Letzte Recherche: ${updatedAt}. Wenn ein Kandidat vollstaendige Daten zu Preis, Reichweite, Ladezeit, Leistung und Oesterreich-Bezug hat, wird er in die Vergleichsliste uebernommen.</p>
+      <p>Letzte Recherche: ${updatedAt}. Wenn ein Kandidat vollstaendige Daten zu Preis, Reichweite, Ladezeit, Leistung und Oesterreich-Bezug hat, kann er in die Vergleichsliste uebernommen werden.</p>
       <div class="research-candidates">
         ${candidates.items.slice(0, 5).map(renderCandidate).join("")}
       </div>
