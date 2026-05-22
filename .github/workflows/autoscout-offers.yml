@@ -1,0 +1,30 @@
+name: Update AutoScout offers
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 5 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-offers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch AutoScout offers
+        run: node scripts/fetch-autoscout-offers.js
+
+      - name: Commit updated offers
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update AutoScout offers
+          file_pattern: autoscout-offers.json
