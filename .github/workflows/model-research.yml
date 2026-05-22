@@ -1,0 +1,30 @@
+name: Modellrecherche aktualisieren
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  research-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Search for model announcements
+        run: node scripts/research-models.js
+
+      - name: Commit model candidates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update model candidates
+          file_pattern: model-candidates.json
