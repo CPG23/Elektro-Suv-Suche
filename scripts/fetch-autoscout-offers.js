@@ -21,15 +21,18 @@ const models = [
 async function main() {
   const criteria = getCriteria();
   const offers = {};
+  const debug = {};
 
   for (const [name, path] of models) {
     const url = buildSearchUrl(path, criteria);
     try {
       const html = await fetchHtml(url);
       offers[name] = parseOffers(html, name, criteria, url).slice(0, MAX_OFFERS_PER_MODEL);
+      debug[name] = buildDebug(html, name, url);
       console.log(`${name}: ${offers[name].length} Treffer`);
     } catch (error) {
       offers[name] = [];
+      debug[name] = { url, error: error.message };
       console.warn(`${name}: keine Treffer geladen (${error.message})`);
     }
   }
@@ -37,7 +40,8 @@ async function main() {
   await fs.writeFile(OUTPUT_FILE, JSON.stringify({
     updatedAt: new Date().toISOString(),
     criteria,
-    offers
+    offers,
+    debug
   }, null, 2) + "\n");
 }
 
@@ -86,6 +90,22 @@ function parseOffers(html, modelName, criteria, searchUrl) {
   }
 
   return parseTextOffers(html, modelName, criteria, searchUrl);
+}
+
+function buildDebug(html, modelName, url) {
+  const lines = textLinesFromHtml(html);
+  const normalized = html.toLowerCase();
+  const modelToken = modelName.split(/\s+/)[1] || modelName;
+
+  return {
+    url,
+    htmlLength: html.length,
+    lineCount: lines.length,
+    hasAutoscout: normalized.includes("autoscout"),
+    hasModelToken: normalized.includes(modelToken.toLowerCase()),
+    offerLinkCount: [...html.matchAll(/href="([^"]*\/angebote\/[^"]+)"/g)].length,
+    sampleLines: lines.slice(100, 125)
+  };
 }
 
 function parseLinkedOffers(html, criteria) {
