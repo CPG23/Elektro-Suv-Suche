@@ -1,6 +1,5 @@
 (function () {
   const grid = document.querySelector("#carGrid");
-  let autoscoutDataPromise;
 
   if (!grid) {
     return;
@@ -38,7 +37,7 @@
     content.className = "offer-content";
 
     const text = document.createElement("p");
-    text.textContent = `Gesucht wird nach ${carName} mit Baujahr ab ${criteria.sinceYear}, Erstzulassung ab ${criteria.sinceLabel}, maximal 5.000 km und Standort Oesterreich.`;
+    text.textContent = `Die Suche ist fuer ${carName} vorbereitet: Standort Oesterreich, Baujahr ab ${criteria.sinceYear}, maximal 5.000 km.`;
 
     const links = document.createElement("div");
     links.className = "offer-links";
@@ -55,98 +54,9 @@
       links.append(link);
     });
 
-    const results = document.createElement("div");
-    results.className = "autoscout-results";
-    results.dataset.carName = carName;
-    results.innerHTML = `<p class="offers-status">AutoScout-Angebote werden beim Aufklappen geladen.</p>`;
-
-    details.addEventListener("toggle", () => {
-      if (details.open && !results.dataset.loaded) {
-        results.dataset.loaded = "true";
-        renderAutoscoutOffers(results, carName, links.firstElementChild?.href);
-      }
-    });
-
-    content.append(text, results, links);
+    content.append(text, links);
     details.append(summary, content);
     return details;
-  }
-
-  async function renderAutoscoutOffers(container, carName, fallbackUrl) {
-    container.innerHTML = `<p class="offers-status">Lade gespeicherte AutoScout-Treffer...</p>`;
-
-    try {
-      const data = await loadAutoscoutData();
-      const offers = findStoredOffers(data, carName);
-
-      if (!offers.length) {
-        container.innerHTML = `
-          <p class="offers-status">Noch keine gespeicherten AutoScout-Treffer fuer dieses Modell vorhanden. Die direkte Suche ist vorbereitet.</p>
-        `;
-        return;
-      }
-
-      const updatedAt = data.updatedAt ? formatDate(data.updatedAt) : "unbekannt";
-      container.innerHTML = `
-        <div class="offers-head">
-          <strong>${offers.length} AutoScout-Treffer</strong>
-          <span>Stand: ${updatedAt}</span>
-        </div>
-        <div class="offer-cards">
-          ${offers.map((offer) => renderOfferCard(offer)).join("")}
-        </div>
-      `;
-    } catch (error) {
-      container.innerHTML = `
-        <p class="offers-status">Die gespeicherten AutoScout-Treffer konnten gerade nicht geladen werden.</p>
-      `;
-    }
-  }
-
-  function renderOfferCard(offer) {
-    const facts = [
-      offer.price,
-      offer.mileage,
-      offer.year,
-      offer.location
-    ].filter(Boolean);
-
-    return `
-      <article class="offer-card">
-        <h4>${escapeHtml(offer.title || "AutoScout-Angebot")}</h4>
-        <p>${facts.map(escapeHtml).join(" · ") || "Details bei AutoScout ansehen"}</p>
-        <a href="${offer.url}" target="_blank" rel="noreferrer">Bei AutoScout ansehen</a>
-      </article>
-    `;
-  }
-
-  function loadAutoscoutData() {
-    if (!autoscoutDataPromise) {
-      autoscoutDataPromise = fetch(`autoscout-offers.json?ts=${Date.now()}`, { cache: "no-store" })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Keine AutoScout-Daten gefunden");
-          }
-          return response.json();
-        });
-    }
-
-    return autoscoutDataPromise;
-  }
-
-  function findStoredOffers(data, carName) {
-    if (!data || !data.offers) {
-      return [];
-    }
-
-    const exact = data.offers[carName];
-    if (Array.isArray(exact)) {
-      return exact;
-    }
-
-    const normalized = normalizeName(carName);
-    const matchedKey = Object.keys(data.offers).find((key) => normalizeName(key) === normalized);
-    return matchedKey && Array.isArray(data.offers[matchedKey]) ? data.offers[matchedKey] : [];
   }
 
   function getOfferCriteria() {
@@ -154,11 +64,7 @@
     since.setFullYear(since.getFullYear() - 1);
 
     return {
-      sinceYear: since.getFullYear(),
-      sinceLabel: new Intl.DateTimeFormat("de-AT", {
-        month: "2-digit",
-        year: "numeric"
-      }).format(since)
+      sinceYear: since.getFullYear()
     };
   }
 
@@ -199,22 +105,6 @@
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase();
-  }
-
-  function formatDate(value) {
-    return new Intl.DateTimeFormat("de-AT", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }).format(new Date(value));
-  }
-
-  function escapeHtml(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
   }
 
   injectOfferLookups();
