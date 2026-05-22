@@ -56,7 +56,6 @@ function buildSearchUrl(path, criteria) {
   const params = new URLSearchParams({
     atype: "C",
     cy: criteria.country,
-    kmto: String(criteria.maxMileageKm),
     sort: "standard",
     desc: "0"
   });
