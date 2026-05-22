@@ -30,14 +30,14 @@
     const label = document.createElement("span");
     const hint = document.createElement("small");
     label.textContent = "Fast neue Angebote abrufen";
-    hint.textContent = "Oesterreich - max. 1 Jahr - max. 5.000 km";
+    hint.textContent = `Oesterreich - Baujahr ab ${criteria.sinceYear} - max. 5.000 km`;
     summary.append(label, hint);
 
     const content = document.createElement("div");
     content.className = "offer-content";
 
     const text = document.createElement("p");
-    text.textContent = `Gesucht wird nach ${carName} mit Erstzulassung ab ${criteria.sinceLabel}, maximal 5.000 km und Standort Oesterreich.`;
+    text.textContent = `Gesucht wird nach ${carName} mit Baujahr ab ${criteria.sinceYear}, Erstzulassung ab ${criteria.sinceLabel}, maximal 5.000 km und Standort Oesterreich.`;
 
     const links = document.createElement("div");
     links.className = "offer-links";
@@ -74,18 +74,18 @@
 
   function buildOfferSearches(carName, criteria) {
     const autoscoutPath = getAutoscoutPath(carName);
-    const query = encodeURIComponent(carName);
-    const detailedQuery = encodeURIComponent(`"${carName}" Oesterreich "5000 km" "Erstzulassung" "${criteria.sinceYear}"`);
+    const query = encodeURIComponent(`${carName} Baujahr ${criteria.sinceYear} 5000 km`);
+    const detailedQuery = encodeURIComponent(`"${carName}" Oesterreich "5000 km" "Baujahr" "${criteria.sinceYear}" "Erstzulassung"`);
 
     return [
       {
         label: "AutoScout24 oeffnen",
-        hint: "mit Oesterreich, Kilometerlimit und junger Erstzulassung",
+        hint: `mit Oesterreich, maximal 5.000 km und Erstzulassung ab ${criteria.sinceYear}`,
         url: `https://www.autoscout24.at/lst/${autoscoutPath}?atype=C&cy=A&kmto=5000&fregfrom=${criteria.sinceYear}&sort=standard&desc=0`
       },
       {
         label: "willhaben suchen",
-        hint: "Modellname ist vorausgefuellt, Filter dort bei Bedarf pruefen",
+        hint: `mit Baujahr ${criteria.sinceYear} und Kilometerlimit als Suchbegriff`,
         url: `https://www.willhaben.at/iad/gebrauchtwagen/auto/gebrauchtwagenboerse?keyword=${query}`
       },
       {
