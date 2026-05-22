@@ -26,7 +26,7 @@ async function main() {
     const url = buildSearchUrl(path, criteria);
     try {
       const html = await fetchHtml(url);
-      offers[name] = parseOffers(html, url).slice(0, MAX_OFFERS_PER_MODEL);
+      offers[name] = parseOffers(html).slice(0, MAX_OFFERS_PER_MODEL);
       console.log(`${name}: ${offers[name].length} Treffer`);
     } catch (error) {
       offers[name] = [];
@@ -81,7 +81,7 @@ async function fetchHtml(url) {
   return response.text();
 }
 
-function parseOffers(html, searchUrl) {
+function parseOffers(html) {
   const matches = [...html.matchAll(/href="([^"]*\/angebote\/[^"]+)"/g)];
   const seen = new Set();
   const offers = [];
@@ -119,17 +119,6 @@ function parseOffers(html, searchUrl) {
     if (offers.length >= MAX_OFFERS_PER_MODEL) {
       break;
     }
-  }
-
-  if (!offers.length && html.includes("autoscout24")) {
-    return [{
-      title: "AutoScout-Suche oeffnen",
-      price: "",
-      mileage: "",
-      year: "",
-      location: "",
-      url: searchUrl
-    }];
   }
 
   return offers;
