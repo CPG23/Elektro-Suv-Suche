@@ -3,6 +3,7 @@ const fs = require("node:fs/promises");
 const OUTPUT_FILE = "model-candidates.json";
 const EXISTING_MODELS_FILE = "data.json";
 const MAX_CANDIDATES = 12;
+const REQUEST_TIMEOUT_MS = 15000;
 
 const searches = [
   "Elektro SUV Österreich 2026 Preis Reichweite",
@@ -15,10 +16,13 @@ const searches = [
 async function main() {
   const existingNames = await loadExistingModelNames();
   const discovered = [];
+  const diagnostics = [];
 
   for (const query of searches) {
-    const items = await fetchBingRss(query);
-    for (const item of items) {
+    const result = await fetchBingRss(query);
+    diagnostics.push(result.diagnostic);
+
+    for (const item of result.items) {
       if (!looksRelevant(item) || isKnownModel(item, existingNames) || isDuplicate(discovered, item)) {
         continue;
       }
@@ -34,11 +38,17 @@ async function main() {
   const payload = {
     updatedAt: new Date().toISOString(),
     items: discovered.slice(0, MAX_CANDIDATES),
+    diagnostics,
     note: "Automatisch recherchierte Kandidaten. Neue Modelle werden erst nach Pruefung vollstaendiger Fahrzeugdaten in die Hauptliste uebernommen."
   };
 
   await fs.writeFile(OUTPUT_FILE, JSON.stringify(payload, null, 2) + "\n");
   console.log(`${payload.items.length} moegliche Kandidaten gespeichert.`);
+
+  const failedSearches = diagnostics.filter((entry) => entry.status !== "ok");
+  if (failedSearches.length) {
+    console.warn(`${failedSearches.length} Suchabfragen konnten nicht geladen werden, der Lauf wurde aber stabil abgeschlossen.`);
+  }
 }
 
 async function loadExistingModelNames() {
@@ -46,25 +56,61 @@ async function loadExistingModelNames() {
     const data = JSON.parse(await fs.readFile(EXISTING_MODELS_FILE, "utf8"));
     const cars = Array.isArray(data.cars) ? data.cars : Array.isArray(data) ? data : [];
     return cars.map((car) => normalize([car.brand, car.model, car.name, car.title].filter(Boolean).join(" ")));
-  } catch (_) {
+  } catch (error) {
+    console.warn(`Bestehende Modelldaten konnten nicht gelesen werden: ${error.message}`);
     return [];
   }
 }
 
 async function fetchBingRss(query) {
   const url = `https://www.bing.com/search?format=rss&q=${encodeURIComponent(query)}`;
-  const response = await fetch(url, {
-    headers: {
-      "user-agent": "Mozilla/5.0 Elektro-SUV-Radar/1.0"
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "user-agent": "Mozilla/5.0 Elektro-SUV-Radar/1.0"
+      },
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      return {
+        items: [],
+        diagnostic: {
+          query,
+          status: "http-error",
+          detail: `HTTP ${response.status}`
+        }
+      };
     }
-  });
 
-  if (!response.ok) {
-    console.warn(`Suche fehlgeschlagen: ${query}`);
-    return [];
+    const xml = await response.text();
+    const items = parseRssItems(xml);
+    return {
+      items,
+      diagnostic: {
+        query,
+        status: "ok",
+        count: items.length
+      }
+    };
+  } catch (error) {
+    return {
+      items: [],
+      diagnostic: {
+        query,
+        status: "network-error",
+        detail: error.name === "AbortError" ? "timeout" : error.message
+      }
+    };
+  } finally {
+    clearTimeout(timeout);
   }
+}
 
-  const xml = await response.text();
+function parseRssItems(xml) {
   return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((match) => {
     const itemXml = match[1];
     return {
