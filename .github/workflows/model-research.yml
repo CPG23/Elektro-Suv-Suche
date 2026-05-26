@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -30,7 +32,17 @@ jobs:
         run: node scripts/research-models.js
 
       - name: Commit model candidates
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Update model candidates
-          file_pattern: model-candidates.json
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add model-candidates.json
+
+          if git diff --cached --quiet; then
+            echo "Keine neuen Modellkandidaten zu speichern."
+            exit 0
+          fi
+
+          git commit -m "Update model candidates"
+          git pull --rebase origin main
+          git push
