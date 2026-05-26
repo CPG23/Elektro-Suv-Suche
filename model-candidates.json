@@ -1,5 +1,32 @@
 {
-  "updatedAt": "2026-05-22T21:55:11.225Z",
+  "updatedAt": "2026-05-26T19:53:12.639Z",
   "items": [],
+  "diagnostics": [
+    {
+      "query": "Elektro SUV Österreich 2026 Preis Reichweite",
+      "status": "ok",
+      "count": 10
+    },
+    {
+      "query": "Elektro-SUV Österreich 2027 angekündigt Preis",
+      "status": "ok",
+      "count": 10
+    },
+    {
+      "query": "neuer Elektro SUV Österreich 2026 40000 60000 Euro",
+      "status": "ok",
+      "count": 10
+    },
+    {
+      "query": "BYD XPENG MG Leapmotor Elektro SUV Österreich 2026 Preis",
+      "status": "ok",
+      "count": 10
+    },
+    {
+      "query": "Skoda VW Kia Hyundai Toyota Elektro SUV Österreich 2027",
+      "status": "ok",
+      "count": 10
+    }
+  ],
   "note": "Automatisch recherchierte Kandidaten. Neue Modelle werden erst nach Pruefung vollstaendiger Fahrzeugdaten in die Hauptliste uebernommen."
 }
