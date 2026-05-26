@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "17 5 * * 1"
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/research-models.js"
+      - ".github/workflows/model-research.yml"
+      - "data.json"
 
 permissions:
   contents: write
