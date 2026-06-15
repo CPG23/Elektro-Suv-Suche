@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-08T09:55:29.051Z",
+  "updatedAt": "2026-06-15T11:23:13.662Z",
   "items": [],
   "diagnostics": [
     {
@@ -20,12 +20,12 @@
     {
       "query": "BYD XPENG MG Leapmotor Elektro SUV Österreich 2026 Preis",
       "status": "ok",
-      "count": 7
+      "count": 10
     },
     {
       "query": "Skoda VW Kia Hyundai Toyota Elektro SUV Österreich 2027",
       "status": "ok",
-      "count": 9
+      "count": 7
     }
   ],
   "note": "Automatisch recherchierte Kandidaten. Neue Modelle werden erst nach Pruefung vollstaendiger Fahrzeugdaten in die Hauptliste uebernommen."
