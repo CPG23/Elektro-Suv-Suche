@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-08-10T06:41:01.985Z",
+  "updatedAt": "2026-08-17T05:49:27.551Z",
   "items": [
     {
       "title": "Škoda UK | The Official Škoda Website",
-      "reason": "Our agile, stylish electric SUV with bold design features. Full details on £1,500 grant on selected electric models‡. Smart, stylish, spacious electric cars that make life easy. Winner! The ",
+      "reason": "Our agile, stylish electric SUV with bold design features. Smart, stylish, spacious electric cars that make life easy. I'm in the Summer drop!* Winner! The Škoda Superb Estate was recently a",
       "url": "https://www.skoda.co.uk/",
       "sourceQuery": "Skoda VW Kia Hyundai Toyota Elektro SUV Österreich 2027"
     }
@@ -12,12 +12,12 @@
     {
       "query": "Elektro SUV Österreich 2026 Preis Reichweite",
       "status": "ok",
-      "count": 7
+      "count": 10
     },
     {
       "query": "Elektro-SUV Österreich 2027 angekündigt Preis",
       "status": "ok",
-      "count": 7
+      "count": 10
     },
     {
       "query": "neuer Elektro SUV Österreich 2026 40000 60000 Euro",
@@ -32,7 +32,7 @@
     {
       "query": "Skoda VW Kia Hyundai Toyota Elektro SUV Österreich 2027",
       "status": "ok",
-      "count": 7
+      "count": 10
     }
   ],
   "note": "Automatisch recherchierte Kandidaten. Neue Modelle werden erst nach Pruefung vollstaendiger Fahrzeugdaten in die Hauptliste uebernommen."
